@@ -12,7 +12,7 @@ The Ansible scripts will do the following
 ### Ansible
       brew install ansible
       or
-      pip install ansible
+      pip3 install ansible
 ### Java
 Minimum version Java8
 ### Python
