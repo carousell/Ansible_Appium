@@ -1,0 +1,5 @@
+---
+- name: Kill Appium Server
+  script: kill-appium-server.sh
+  no_log: True
+  failed_when: false

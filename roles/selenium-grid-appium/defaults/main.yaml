@@ -1,14 +1,14 @@
-selenium_jar_path: /Users/syam/Desktop/server
+selenium_jar_path: /Users/Shared/server
 selenium_manage_jar: true
 selenium_jar_host: selenium-release.storage.googleapis.com
 selenium_version: 3.141.59
 selenium_jar_uri: "{{ selenium_version | regex_replace('\\.[0-9]+$', '') }}/selenium-server-standalone-{{ selenium_version }}.jar"
 selenium_mirror: "http://{{selenium_jar_host}}/{{selenium_jar_uri}}"
-selenium_config_path: /Users/syam/Desktop/server
+selenium_config_path: /Users/Shared/server
 
 selenium_hub_enabled: true
 
-selenium_hub_json_path: /Users/syam/Desktop/server
+selenium_hub_json_path: /Users/Shared/server
 selenium_hub_port: 4444
 selenium_hub_new_session_wait_timeout: -1
 selenium_hub_servlets: []
@@ -20,6 +20,7 @@ selenium_hub_clean_up_cycle: 5000
 selenium_hub_debug: false
 selenium_hub_browser_timeout: 0
 selenium_hub_timeout: 1800
+
 
 selenium_node_enabled: true
 selenium_node_proxy: org.openqa.grid.selenium.proxy.DefaultRemoteProxy
@@ -39,9 +40,5 @@ selenium_node_servlets: []
 selenium_node_without_servlets: []
 selenium_node_custom: {}
 
-
-selenium_node_capabilities:
-  - browserName: chrome
-    maxInstances: 10
-  - browserName: firefox
-    maxInstances: 10
+json_file: "{{ lookup('file', 'templates/node.json.j2') | to_nice_json }}"
+node_config_template: "templates/node.json.j2"

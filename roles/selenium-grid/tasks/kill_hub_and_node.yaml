@@ -1,6 +1,0 @@
----
- - name: kill selenium hub and node
-   command: bash -lc "lsof -i tcp:{{item}} | grep java | awk '{print $2}' | xargs kill -9"
-   loop:
-     - "{{selenium_hub_port}}"
-     - "{{selenium_node_port}}"
