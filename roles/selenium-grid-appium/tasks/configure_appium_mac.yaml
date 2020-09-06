@@ -1,0 +1,46 @@
+#This file is called from configure_appium_main.yaml
+- name: set port for appium
+  set_fact:
+    remote_host_ip: '{{ansible_all_ipv4_addresses.0}}'
+    remote_node_config: "{{selenium_config_path}}/node-config-device{{item.port_appium_remote}}.json"
+- name: get the UDID for phone name
+  shell: "instruments -s devices | grep  \"{{item.phone_name}} ({{item.os_version}}) \\[\" | grep -Ehro \"[0-9A-Z]{8}\\-[0-9A-Z]{4}\\-[0-9A-Z]{4}\\-[0-9A-Z]{4}\\-[0-9A-Z]{12}\""
+  register: udid
+- name: check if the file exists
+  stat:
+    path: '{{remote_node_config}}'
+  register: node_config_1
+- name: copy node configuration
+  copy:
+    src: '{{node_config_template}}'
+    dest: '{{remote_node_config}}'
+- replace:
+    path: '{{remote_node_config}}'
+    regexp: '___remote_host_ip___'
+    replace: '{{remote_host_ip}}'
+- replace:
+    path: '{{remote_node_config}}'
+    regexp: '(___port_appium_remote___)'
+    replace: '{{item.port_appium_remote}}'
+- replace:
+    path: '{{remote_node_config}}'
+    regexp: '(___wda_port_appium_remote___)'
+    replace: '{{item.wda_port_appium_remote}}'
+- replace:
+    path: '{{remote_node_config}}'
+    regexp: '___selenium_node_hub_port___'
+    replace: '{{selenium_node_hub_port}}'
+- replace:
+    path: '{{remote_node_config}}'
+    regexp: '___selenium_node_hub_host___'
+    replace: '{{selenium_node_hub_host}}'
+- replace:
+    path: '{{remote_node_config}}'
+    regexp: '___phone_name___'
+    replace: '{{item.phone_name}}'
+- replace:
+    path: '{{remote_node_config}}'
+    regexp: '___udid___'
+    replace: '{{udid.stdout}}'
+- debug:
+    msg: "{{udid.stdout}}"

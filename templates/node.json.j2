@@ -1,18 +1,34 @@
 {
-  "capabilities": {{ selenium_node_capabilities | to_json }},
-  "proxy": "{{selenium_node_proxy}}",
-  "maxSession": {{selenium_node_max_session}},
-  "port": {{selenium_node_port}},
-  "register": true,
-  "registerCycle": {{selenium_node_register_cycle}},
-  "hub": "http://{{selenium_node_hub_host}}:{{selenium_hub_port}}",
-  "nodeStatusCheckTimeout": {{selenium_node_status_check_timeout}},
-  "nodePolling": {{selenium_node_polling}},
-  "role": "node",
-  "unregisterIfStillDownAfter": {{selenium_node_unregister_if_down_after}},
-  "downPollingLimit": {{selenium_node_down_polling_limit}},
-  "debug": {% if selenium_node_debug %}true{% else %}false{% endif %},
-  "servlets" : {{selenium_node_servlets | to_json}},
-  "withoutServlets": {{selenium_node_without_servlets | to_json}},
-  "custom": {{selenium_node_custom | to_json}}
+  "capabilities":
+      [
+        {
+        "browserName": "___phone_name___",
+        "deviceName": "___udid___",
+        "udid": "___udid___",
+        "applicationName": "___udid___",
+        "appium:nodeName": "___udid___",
+        "maxInstances": 1,
+        "wdaLocalPort":___wda_port_appium_remote___,
+        "platformName":"ios",
+        "platformVersion":"12.0"
+        }
+      ],
+  "configuration":
+  {
+    "cleanUpCycle":2000,
+    "timeout":300,
+    "proxy": "org.openqa.grid.selenium.proxy.DefaultRemoteProxy",
+    "url":"http://___remote_host_ip___:___port_appium_remote___/wd/hub",
+    "host": "___remote_host_ip___",
+    "port": ___port_appium_remote___,
+    "maxSession": 1,
+    "register": true,
+    "registerCycle": 5000,
+    "hubPort": ___selenium_node_hub_port___,
+    "hubHost": "___selenium_node_hub_host___",
+    "hubProtocol": "http",
+    "nodePolling": 1000,
+    "nodeStatusCheckTimeout": 1000,
+    "unregisterIfStillDownAfter": 1000
+  }
 }

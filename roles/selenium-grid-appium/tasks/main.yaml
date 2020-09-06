@@ -1,0 +1,8 @@
+---
+- include: download.yaml
+- include: configure_hub.yaml
+- include: configure_nodes.yaml
+- include: kill_grid.yaml
+- include: kill_appium_nodes.yaml
+- include: start_grid.yaml
+- include: start_appium_nodes.yaml

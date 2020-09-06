@@ -1,0 +1,12 @@
+---
+- name: Check all port numbers are accessible from current host
+  command: "nc -vz localhost {{ item }}"
+  failed_when: false
+  register: results_appium
+  with_items:
+      - 4724
+      - 4725
+- name: Start appium server if not started
+  script: rerun-appium.sh {{ item.item }} {{selenium_config_path}}
+  when: item.rc == 1
+  with_items: "{{ results_appium.results }}"

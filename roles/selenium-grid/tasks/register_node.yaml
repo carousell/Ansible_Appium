@@ -1,5 +1,0 @@
----
-- name: Start selenium grid server
-  vars:
-    path : "{{selenium_jar_path}}"
-  command: bash -lc "cd {{path}} && /usr/local/Cellar/screen/4.7.0/bin/screen -dm -L -Logfile node_log java -cp *:. org.openqa.grid.selenium.GridLauncherV3 -role webdriver -nodeConfig node.json"

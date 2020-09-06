@@ -1,7 +1,7 @@
 #!/usr/bin/env ansible-playbook
 ---
-- name: Start Selenium Hub server
+- name: Start Selenium Hub server and register iOS simulators
   hosts: grid
 
   roles:
-    - selenium-grid
+    - selenium-grid-appium

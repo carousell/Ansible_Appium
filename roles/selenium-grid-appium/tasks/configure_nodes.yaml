@@ -1,0 +1,5 @@
+---
+ - include_tasks: configure_appium_mac.yaml
+   with_items:
+      - {phone_name: 'iPhone X' , port_appium_remote: 4724, wda_port_appium_remote: 5724 , os_version: '12.0'}
+      - {phone_name: 'iPhone 8' , port_appium_remote: 4725, wda_port_appium_remote: 5725 , os_version: '12.0'}
