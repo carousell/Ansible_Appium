@@ -1,0 +1,14 @@
+{
+  "port": {{selenium_hub_port}},
+  "newSessionWaitTimeout": {{selenium_hub_new_session_wait_timeout}},
+  "servlets" : {{selenium_hub_servlets | to_json}},
+  "withoutServlets": {{selenium_hub_without_servlets | to_json}},
+  "custom": {{selenium_hub_custom | to_json}},
+  "capabilityMatcher": "{{selenium_hub_capability_matcher}}",
+  "throwOnCapabilityNotPresent": {% if selenium_hub_capability_throw %}true{% else %}false{% endif %},
+  "cleanUpCycle": {{selenium_hub_clean_up_cycle}},
+  "role": "hub",
+  "debug": {% if selenium_hub_debug %}true{% else %}false{% endif %},
+  "browserTimeout": {{selenium_hub_browser_timeout}},
+  "timeout": {{selenium_hub_timeout}}
+}

@@ -1,0 +1,18 @@
+{
+  "capabilities": {{ selenium_node_capabilities | to_json }},
+  "proxy": "{{selenium_node_proxy}}",
+  "maxSession": {{selenium_node_max_session}},
+  "port": {{selenium_node_port}},
+  "register": true,
+  "registerCycle": {{selenium_node_register_cycle}},
+  "hub": "http://{{selenium_node_hub_host}}:{{selenium_hub_port}}",
+  "nodeStatusCheckTimeout": {{selenium_node_status_check_timeout}},
+  "nodePolling": {{selenium_node_polling}},
+  "role": "node",
+  "unregisterIfStillDownAfter": {{selenium_node_unregister_if_down_after}},
+  "downPollingLimit": {{selenium_node_down_polling_limit}},
+  "debug": {% if selenium_node_debug %}true{% else %}false{% endif %},
+  "servlets" : {{selenium_node_servlets | to_json}},
+  "withoutServlets": {{selenium_node_without_servlets | to_json}},
+  "custom": {{selenium_node_custom | to_json}}
+}
