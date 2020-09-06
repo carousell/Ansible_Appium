@@ -1,0 +1,7 @@
+#!/usr/bin/env ansible-playbook
+---
+- name: Start Selenium Hub server
+  hosts: grid
+
+  roles:
+    - selenium-grid

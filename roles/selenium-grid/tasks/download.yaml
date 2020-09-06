@@ -1,0 +1,37 @@
+---
+- name: Check the selenium server jar download folder exists
+  stat:
+    path: "{{selenium_jar_path}}"
+  register: selenium_jar_dir
+
+- name: "echo if server download directory already existed"
+  debug:
+    msg: "the server directory is already existed"
+  when: selenium_jar_dir.stat.exists
+
+- name: "Create server jar directory if not exists"
+  file:
+    path: "{{selenium_jar_path}}"
+    state: directory
+    mode: 0777
+  when: selenium_jar_dir.stat.exists == false
+
+- name: Download the selenium grid jar
+  async: 1000
+  poll: 0
+  register: download_status
+  get_url:
+    url: "{{selenium_mirror}}"
+    dest: "{{selenium_jar_path}}/selenium-server-standalone-{{selenium_version}}.jar"
+    mode: 0775
+  when: selenium_manage_jar
+- name: Debugging download status
+  debug:
+    msg: "{{download_status}}"
+- name: Check if the download is finished
+  async_status:
+    jid: "{{ download_status.ansible_job_id }}"
+  register: job_result
+  until: job_result.finished
+  retries: 100
+  when: selenium_manage_jar

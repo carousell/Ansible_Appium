@@ -1,0 +1,6 @@
+---
+- include: kill_hub_and_node.yaml
+- include: download.yaml
+- include: create_config_files.yaml
+- include: start_grid.yaml
+- include: register_node.yaml
