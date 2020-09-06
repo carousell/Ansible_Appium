@@ -1,4 +1,4 @@
-# ansible-for-selenium-grid
+# ansible-for-selenium-grid (On Mac OS)
 Ansible playbook for quick Selenium-Appium grid configuration
 
 This is a sample code for configuring selenium grid with Ansible scripts.
@@ -9,8 +9,7 @@ The Ansible scripts will do the following
 - Restart hub and node processes
 
 # Installation
-### Operating System
-Mac OS
+
 ### Ansible
       brew install ansible
       or
