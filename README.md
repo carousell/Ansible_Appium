@@ -9,6 +9,8 @@ The Ansible scripts will do the following
 - Restart hub and node processes
 
 # Installation
+### Operating System
+Mac OS
 ### Ansible
       brew install ansible
       or
